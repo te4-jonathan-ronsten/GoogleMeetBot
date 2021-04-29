@@ -1,8 +1,17 @@
 const express = require('express', 4.17, 1);
 const app = express();
 const port = 3030;
-app.get('/', async (req, res) => {
-	await bot();
+
+app.use((req, res, next) => {
+	res.header('Access-Control-Allow-Origin', '*');
+  	next();
+});
+
+app.get('/', async (request, response) => {
+	const res = await bot();
+	response.json({
+		res
+	})
 });
 
 app.listen(port, () => {

@@ -3,6 +3,7 @@ button.addEventListener('click', runBot);
 
 async function runBot() {
     const response = await fetch('http://localhost:3030');
-    // .then(response => {})
-    console.log(response);
+    const data = await response.json();
+    console.log(data);
 }
+
